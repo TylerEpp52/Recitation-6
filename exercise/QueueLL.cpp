@@ -31,6 +31,18 @@ void QueueLL::enqueue(int key)
     nn->next = nullptr;
 
     // TODO Complete this function, handle the case when you're enqueuing in an empty queue
+    if(queueEnd != NULL)
+    {
+        queueEnd->next = NULL;
+        queueEnd = nn;
+    }
+
+    else
+    {
+        queueEnd = nn;
+        queueFront = queueEnd;
+
+    }
 }
 
 //TODO
@@ -39,9 +51,12 @@ void QueueLL::dequeue()
     if(!isEmpty())
     {
         // TODO Complete this function, handle the case when your queue becomes empty after dequeuing
+        Node* temp = queueFront;
+        queueFront = queueFront->next;
     }
     else{
         cout<<"queue is empty. can not deque"<<endl;
+        queueEnd = queueFront;
     }
 }
 
